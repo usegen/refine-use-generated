@@ -1,0 +1,16 @@
+{
+  "name": "refine-use-generated",
+  "version": "1.0.0",
+  "description": "useGenerated dataprovider package for Refine",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "refine",
+    "useGenerated.com",
+    "GraphQL"
+  ],
+  "author": "usegen",
+  "license": "MIT"
+}
