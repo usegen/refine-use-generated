@@ -4,7 +4,6 @@ import { GraphQLClient } from "graphql-request";
 import * as gql from "gql-query-builder";
 import pluralize from "pluralize";
 import camelCase from "camelcase";
-import { generateFilter } from '@refinedev/graphql';
 import { createNestedInput, generateSort, generateWherePropFromFilters, excludePropsFomObj, includeJustPropsFromObj, updateNestedInput } from './utils';
 
 
