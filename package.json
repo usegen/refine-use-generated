@@ -1,7 +1,7 @@
 {
   "name": "refine-use-generated",
   "description": "useGenerated dataprovider package for Refine",
-  "version": "6.4.2",
+  "version": "1.0.0",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -23,7 +23,10 @@
     "start": "tsup --watch --format esm,cjs,iife --legacy-output",
     "build": "tsup --format esm,cjs,iife --minify --legacy-output",
     "test": "jest --passWithNoTests --runInBand",
-    "prepare": "npm run build"
+    "prepare": "npm run build",
+    "version": "npm run build && git add -A dist",
+    "git-tag": "git push && git push --tags && rm -rf build/temp"
+    
   },
   "author": "usegen",
   "module": "dist/esm/index.js",
