@@ -2,7 +2,6 @@
 .DS_Store
 node_modules
 .cache
-dist
 .rpt2_cache
 coverage
 .vscode
