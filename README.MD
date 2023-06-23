@@ -9,6 +9,8 @@
 
 ## Documentation
 
+Check out [this tutorial](https://dev.to/usegen/refinedev-and-usegeneratedcom-business-apps-extremely-fast-2g08)
+
 For more detailed information and usage, refer to the [refine data provider documentation](https://refine.dev/docs/core/providers/data-provider).
 
 ## Install
