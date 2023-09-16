@@ -158,7 +158,7 @@ import { createNestedInput, generateSort, generateWherePropFromFilters, excludeP
 
             const operation = meta?.operation ?? pascalUpdateName;
 
-            const initialVariables = {};
+            const initialVariables =  {};
             const nestedFieldsNames = meta?.nestedFieldsNames || [];
             const nestedVars = includeJustPropsFromObj(variables, nestedFieldsNames);
             const nestedInput = updateNestedInput(nestedVars, initialVariables);
