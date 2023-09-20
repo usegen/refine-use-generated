@@ -19,7 +19,7 @@ import { createNestedInput, generateSort, generateWherePropFromFilters, excludeP
 
             const orderBy = generateSort(sorters);
 
-            const where = generateWherePropFromFilters(filters, meta?.nestedFieldsNames, meta?.nestedListFieldsNames);
+            const where = meta?.where || generateWherePropFromFilters(filters, meta?.nestedFieldsNames, meta?.nestedListFieldsNames);
             const pascalResource = camelCase(singularResource, { pascalCase: true });
            
             const pluralRessource = pluralize(pascalResource)

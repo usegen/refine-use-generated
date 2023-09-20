@@ -3,22 +3,30 @@ const itemWithSameIdExists = (itemsList: any[], item: any) => {
   return itemsList.map((item: any) => item?.id).filter(i => !!i)
     .indexOf(item?.id) !== -1
 }
-
+const parseUpdateResource= (resource:any) => {
+  const {id, ...rest} = resource;
+  // {data:{start:"2232"},where:{id:6}}
+    return {
+      data:{...rest},
+      where:{id:Number(id)}
+    }
+}
 export const createDeleteUpdateFields = (currentData: any, initialData: any) => {
   console.log('currentData...', currentData)
   console.log('initialData...', initialData)
   if (Array.isArray(currentData)) {
     const nestedResourcestoBeCreated = currentData.filter((item: any) => !item?.id);
-    const nestedResourcesToBeUpdated = currentData.filter((item: any) => !!item?.id);
-    const nestedResourcestoBeDeleted = initialData.filter((item: any) => !itemWithSameIdExists(currentData, item))
+    const nestedResourcesToBeUpdated = currentData.filter((item: any) => !!item?.id).map(parseUpdateResource);
+    const nestedResourcestoBeDeleted = (initialData || []).filter((item: any) => !itemWithSameIdExists(currentData, item))
     return {
       create: nestedResourcestoBeCreated,
       update: nestedResourcesToBeUpdated,
       delete: nestedResourcestoBeDeleted,
     }
   } 
-  if (!isNaN(Number(currentData))) {
-    return {connect:{id:Number(currentData)}}
+  console.log('currentData .....',currentData)
+  if (Object.keys(currentData).length === 1 &&  !!currentData?.id ) {
+    return {connect:{id:Number(currentData?.id)}}
   }
   return {}
 
@@ -30,7 +38,7 @@ export const updateNestedInput = (nestedFields: any, initialVariables: any={}) =
     return {
       ...accum,
       [fieldName]: {
-        ...createDeleteUpdateFields(data,  {})
+        ...createDeleteUpdateFields(data,  null)
       }
     };
   }, {});

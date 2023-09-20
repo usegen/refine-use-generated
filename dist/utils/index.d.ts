@@ -1,6 +1,11 @@
 export declare const createDeleteUpdateFields: (currentData: any, initialData: any) => {
     create: any[];
-    update: any[];
+    update: {
+        data: any;
+        where: {
+            id: number;
+        };
+    }[];
     delete: any;
     connect?: undefined;
 } | {
