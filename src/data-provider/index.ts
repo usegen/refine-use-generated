@@ -115,7 +115,8 @@ import { createNestedInput, generateSort, generateWherePropFromFilters, excludeP
 
         createMany: async ({ resource, variables, meta }) => {
             const singularResource = pluralize.singular(resource);
-            const camelCreateName = camelCase(`create${singularResource}`);
+            const pascalResource = camelCase(singularResource, { pascalCase: true });
+            const camelCreateName = camelCase(`create${pascalResource}`);
 
             const operation = meta?.operation ?? camelCreateName;
 
@@ -124,18 +125,12 @@ import { createNestedInput, generateSort, generateWherePropFromFilters, excludeP
                     const { query, variables: gqlVariables } = gql.mutation({
                         operation,
                         variables: {
-                            input: {
+                            createInput: {
                                 value: { data: param },
-                                type: `${camelCreateName}Input`,
+                                type: `${pascalResource}CreateInput`,
                             },
                         },
-                        fields: meta?.fields ?? [
-                            {
-                                operation: singularResource,
-                                fields: ["id"],
-                                variables: {},
-                            },
-                        ],
+                        fields: ["id"],
                     });
                     const result = await client.request<BaseRecord>(
                         query,
