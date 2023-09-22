@@ -127,7 +127,7 @@ import { createNestedInput, generateSort, generateWherePropFromFilters, excludeP
                         variables: {
                             createInput: {
                                 value: { data: param },
-                                type: `${pascalResource}CreateInput`,
+                                type: `${pascalResource}CreateInput!`,
                             },
                         },
                         fields: ["id"],
